@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>Zakat Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="zakat-tax-page">
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="personalInfo.html">My Profile</a>
+        <a href="tools.html">Tools</a>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <h1>Zakat Calculator</h1>
+
+        <h2>Calculate Your Zakat</h2>
+        <input type="number" id="income" placeholder="Enter your annual income (RM)">
+        <button onclick="calculateZakat()">Calculate</button>
+        <p><strong>Zakat Amount:</strong> RM <span id="zakatResult">0.00</span></p>
+
+        <!-- Zakat Rate Table -->
+        <h2>Zakat Rate</h2>
+        <table class="zakat-table">
+            <tr>
+                <th>Type of Income</th>
+                <th>Zakat Rate</th>
+            </tr>
+            <tr>
+                <td>Annual Salary & Savings</td>
+                <td>2.5%</td>
+            </tr>
+            <tr>
+                <td>Gold (85g & above)</td>
+                <td>2.5%</td>
+            </tr>
+            <tr>
+                <td>Silver (595g & above)</td>
+                <td>2.5%</td>
+            </tr>
+            <tr>
+                <td>Business Income</td>
+                <td>2.5%</td>
+            </tr>
+            <tr>
+                <td>Investment Returns</td>
+                <td>2.5%</td>
+            </tr>
+        </table>
+
+        <br>
+        <a href="tools.html">Back to Tools</a>
+    </div>
+
+    <!-- JavaScript for Zakat Calculation -->
+    <script>
+        function calculateZakat() {
+            let income = parseFloat(document.getElementById("income").value);
+            if (!isNaN(income) && income > 0) {
+                let zakat = income * 0.025;
+                document.getElementById("zakatResult").innerText = zakat.toFixed(2);
+            } else {
+                document.getElementById("zakatResult").innerText = "0.00";
+            }
+        }
+    </script>
+
+</body>
+</html>

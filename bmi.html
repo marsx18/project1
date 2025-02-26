@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bmi-page">
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="personalInfo.html">My Profile</a>
+        <a href="tools.html">Tools</a>
+    </div>
+
+    <!-- BMI Container -->
+    <div class="bmi-container">
+        
+        <!-- BMI Table at the Top -->
+        <h2>BMI Categories</h2>
+        <table class="bmi-table">
+            <tr>
+                <th>BMI Range</th>
+                <th>Category</th>
+            </tr>
+            <tr>
+                <td>&lt; 18.5</td>
+                <td>Underweight</td>
+            </tr>
+            <tr>
+                <td>18.5 - 24.9</td>
+                <td>Normal Weight</td>
+            </tr>
+            <tr>
+                <td>25 - 29.9</td>
+                <td>Overweight</td>
+            </tr>
+            <tr>
+                <td>30 - 34.9</td>
+                <td>Obese (Class 1)</td>
+            </tr>
+            <tr>
+                <td>35 - 39.9</td>
+                <td>Obese (Class 2)</td>
+            </tr>
+            <tr>
+                <td>≥ 40</td>
+                <td>Severely Obese</td>
+            </tr>
+        </table>
+
+        <!-- BMI Calculator Below the Table -->
+        <div class="bmi-calculator">
+            <h1>BMI Checker</h1>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter weight">
+
+            <label for="height">Height (m):</label>
+            <input type="number" id="height" placeholder="Enter height">
+
+            <button onclick="calculateBMI()">Check BMI</button>
+
+            <p id="bmi-result"></p>
+        </div>
+
+        <br>
+        <a href="tools.html">Back to Tools</a>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (weight > 0 && height > 0) {
+                let bmi = weight / (height * height);
+                let category = '';
+
+                if (bmi < 18.5) category = 'Underweight';
+                else if (bmi < 25) category = 'Normal Weight';
+                else if (bmi < 30) category = 'Overweight';
+                else if (bmi < 35) category = 'Obese (Class 1)';
+                else if (bmi < 40) category = 'Obese (Class 2)';
+                else category = 'Severely Obese';
+
+                document.getElementById('bmi-result').innerHTML = 
+                    `Your BMI is: <strong>${bmi.toFixed(1)}</strong> (${category})`;
+            } else {
+                document.getElementById('bmi-result').innerHTML = "Please enter valid values!";
+            }
+        }
+    </script>
+
+</body>
+</html>

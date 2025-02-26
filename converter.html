@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="converter-page">
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="personalInfo.html">My Profile</a>
+        <a href="tools.html">Tools</a>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <h2>Unit Converter</h2>
+        <input type="number" id="inputValue" placeholder="Enter value">
+        
+        <button onclick="convert('cmToM')">cm → m</button>
+        <button onclick="convert('mToCm')">m → cm</button>
+        <button onclick="convert('mToKm')">m → km</button>
+        <button onclick="convert('kmToM')">km → m</button>
+
+        <p>Converted Value: <span id="conversionResult"></span></p>
+    </div>
+
+
+
+    <script>
+        function convert(type) {
+            let value = parseFloat(document.getElementById("inputValue").value);
+            let result = 0;
+
+            if (type === "cmToM") result = value / 100;
+            else if (type === "mToCm") result = value * 100;
+            else if (type === "mToKm") result = value / 1000;
+            else if (type === "kmToM") result = value * 1000;
+
+            document.getElementById("conversionResult").innerText = result;
+        }
+    </script>
+
+</body>
+</html>
